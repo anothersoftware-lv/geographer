@@ -18,14 +18,11 @@ trait ExposesFields
         return isset($this->exposed[$offset]);
     }
 
-
     /**
      * @param mixed $offset
-     *
      * @return mixed
-     * @throws UnknownFieldException
      */
-    public function offsetGet($offset): mixed
+    public function offsetGet(mixed $offset): mixed
     {
         if (is_string($offset)) {
             return $this->__get($offset);
@@ -37,7 +34,7 @@ trait ExposesFields
      * @param mixed $value <p>
      * @return void
      */
-    public function offsetSet($offset, $value): void
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         return;
     }
@@ -46,7 +43,7 @@ trait ExposesFields
      * @param mixed $offset
      * @return void
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset(mixed $offset): void
     {
         return;
     }
@@ -54,7 +51,7 @@ trait ExposesFields
     /**
      * @return array
      */
-    public function toArray(): array
+    public function toArray()
     {
         $array = [];
 
@@ -71,7 +68,7 @@ trait ExposesFields
      * @param string $path
      * @return mixed
      */
-    protected function extract($path): mixed
+    protected function extract($path)
     {
         $parts = explode('.', $path);
 
@@ -137,7 +134,7 @@ trait ExposesFields
      * @param  int  $options
      * @return string
      */
-    public function toJson($options = 0): string
+    public function toJson($options = 0)
     {
         return json_encode($this->toArray(), $options);
     }
@@ -145,7 +142,7 @@ trait ExposesFields
     /**
      * @return string
      */
-    public function __toString(): string
+    public function __toString()
     {
         return $this->toJson();
     }
